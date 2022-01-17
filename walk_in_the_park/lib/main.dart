@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:walk_in_the_park/screens/exerciseDetailPage.dart';
+import 'package:walk_in_the_park/screens/exerciseListPage.dart';
 
 void main() => runApp(MyApp());
 
@@ -8,15 +10,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Material App',
       home: Scaffold(
-        appBar: AppBar(
-          title: Text('Material App Bar'),
-        ),
-        body: Center(
-          child: Container(
-            child: Text('Hello World'),
+          appBar: AppBar(
+            title: Text('Material App Bar'),
           ),
-        ),
-      ),
+          body: exerciseListPage()),
     );
   }
 }
