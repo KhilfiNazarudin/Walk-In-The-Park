@@ -1,23 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:walk_in_the_park/models/exercise.dart';
-import 'package:walk_in_the_park/widgets/exerciseList.dart';
+import 'package:walk_in_the_park/models/chat.dart';
+import 'package:walk_in_the_park/widgets/conversationList.dart';
 
-class exerciseListPage extends StatefulWidget {
-  exerciseListPage({Key? key}) : super(key: key);
-
+class ChatPage extends StatefulWidget {
   @override
-  _exerciseListPageState createState() => _exerciseListPageState();
+  _ChatPageState createState() => _ChatPageState();
 }
 
-class _exerciseListPageState extends State<exerciseListPage> {
-  //CONNECT TO DATABASE TO CREATE A LIST OF EXERCISES
-  List<Exercises> exercises = [
-    Exercises('name', 'briefDescription', 'Description'),
-    Exercises('PushUp', 'PushUp', 'PushUp'),
-    Exercises('Pull-up', 'A pull-up is an upper-body strength exercise.',
-        'The pull-up is a closed-chain movement where the body is suspended by the hands and pulls up. As this happens, the elbows flex and the shoulders adduct and extend to bring the elbows to the torso.'),
+class _ChatPageState extends State<ChatPage> {
+  List<ChatUsers> chatUsers = [
+    ChatUsers(
+        name: "Doctor Mohamed Khilfi",
+        messageText: "You have drastically slowed your stage 2 parkinsons",
+        imageURL: "images/userImage1.jpeg",
+        time: "Now"),
   ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +22,7 @@ class _exerciseListPageState extends State<exerciseListPage> {
         physics: BouncingScrollPhysics(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
+          children: <Widget>[
             SafeArea(
               child: Padding(
                 padding: EdgeInsets.only(left: 16, right: 16, top: 10),
@@ -33,7 +30,7 @@ class _exerciseListPageState extends State<exerciseListPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     Text(
-                      "Exercises",
+                      "Conversations",
                       style:
                           TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
                     ),
@@ -88,19 +85,20 @@ class _exerciseListPageState extends State<exerciseListPage> {
               ),
             ),
             ListView.builder(
-              itemCount: exercises.length,
+              itemCount: chatUsers.length,
               shrinkWrap: true,
               padding: EdgeInsets.only(top: 16),
               physics: NeverScrollableScrollPhysics(),
               itemBuilder: (context, index) {
-                return exerciseList(
-                  name: exercises[index].name,
-                  description: exercises[index].description,
-                  briefDescription: exercises[index].briefDescription,
-                  exercises: exercises[index],
+                return ConversationList(
+                  name: chatUsers[index].name,
+                  messageText: chatUsers[index].messageText,
+                  imageUrl: chatUsers[index].imageURL,
+                  time: chatUsers[index].time,
+                  isMessageRead: (index == 0 || index == 3) ? true : false,
                 );
               },
-            )
+            ),
           ],
         ),
       ),
