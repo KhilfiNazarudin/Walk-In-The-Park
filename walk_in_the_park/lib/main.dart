@@ -1,15 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:walk_in_the_park/screens/exerciseDetailPage.dart';
-import 'package:walk_in_the_park/screens/exerciseListPage.dart';
-import 'package:walk_in_the_park/screens/profilePage.dart';
-import 'screens/chatListPage.dart';
+import 'package:walk_in_the_park/screens/exercise/exerciseDetailPage.dart';
+import 'package:walk_in_the_park/screens/exercise/exerciseListPage.dart';
+import 'package:walk_in_the_park/screens/profile/profilePage.dart';
+import 'screens/chats/chatListPage.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(Main());
 
-class MyApp extends StatelessWidget {
+class Main extends StatefulWidget {
+  Main({Key? key}) : super(key: key);
+
+  @override
+  _MainState createState() => _MainState();
+}
+
+class _MainState extends State<Main> {
+  Color defaultp = Colors.red.shade300;
+  Color defaults = Colors.yellow.shade200;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(primaryColor: defaultp, hintColor: defaults),
       title: 'Material App',
       home: profilePage(),
     );
