@@ -25,7 +25,7 @@ class _profilePageState extends State<profilePage> {
                 children: <Widget>[
                   CircleAvatar(
                     radius: 50,
-                    //backgroundImage: AssetImage('images/profile/superhero.jpg'),
+                    backgroundImage: AssetImage('images/superhero.jpg'),
                     backgroundColor: Colors.black,
                   ),
                   Text(

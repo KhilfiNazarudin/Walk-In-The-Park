@@ -23,7 +23,7 @@ class _MainState extends State<Main> {
     return MaterialApp(
       theme: ThemeData(primaryColor: defaultp, hintColor: defaults),
       title: 'Material App',
-      home: homeScreen(),
+      home: exerciseListPage(),
     );
   }
 }

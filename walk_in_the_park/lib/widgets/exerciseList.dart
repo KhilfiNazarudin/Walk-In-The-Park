@@ -8,12 +8,14 @@ class exerciseList extends StatefulWidget {
   String description;
   String briefDescription;
   Exercises exercises;
+  String img;
 
   exerciseList(
       {required this.name,
       required this.description,
       required this.briefDescription,
-      required this.exercises});
+      required this.exercises,
+      required this.img});
 
   @override
   _exerciseListState createState() => _exerciseListState();
@@ -37,8 +39,9 @@ class _exerciseListState extends State<exerciseList> {
         child: Row(
           children: <Widget>[
             CircleAvatar(
+              backgroundImage: AssetImage('${widget.img}'),
               backgroundColor: Colors.black,
-              maxRadius: 30,
+              radius: 50,
             ),
             SizedBox(
               width: 16,

@@ -12,10 +12,26 @@ class exerciseListPage extends StatefulWidget {
 class _exerciseListPageState extends State<exerciseListPage> {
   //CONNECT TO DATABASE TO CREATE A LIST OF EXERCISES
   List<Exercises> exercises = [
-    Exercises('name', 'briefDescription', 'Description'),
-    Exercises('PushUp', 'PushUp', 'PushUp'),
-    Exercises('Pull-up', 'A pull-up is an upper-body strength exercise.',
-        'The pull-up is a closed-chain movement where the body is suspended by the hands and pulls up. As this happens, the elbows flex and the shoulders adduct and extend to bring the elbows to the torso.'),
+    Exercises(
+        'Aerobics',
+        'Exercose that mixes strength and flexibility training',
+        'Aerobics is a form of physical exercise that combines rhythmic aerobic exercise with stretching and strength training routines with the goal of improving all elements of fitness (flexibility, muscular strength, and cardio-vascular fitness). It is usually performed to music and may be practiced in a group setting led by an instructor (fitness professional), although it can be done solo and without musical accompaniment.',
+        'images/aerobic.jpg'),
+    Exercises(
+        "Strength",
+        "A strength exercise is any activity that makes your muscles work harder than usual. ",
+        "Strength training exercises work your muscles by applying a resistance against which the muscles need to exert a force. The aim is to use an appropriate weight or resistant force that will work the target muscles to fatigue, over 8 to 12 repetitions of an exercise.",
+        "images/strength.jpg"),
+    Exercises(
+        "Balance and Agility",
+        "Exercises to improve speed and stability ",
+        "Agility simply means the speed with which a child performs a movement. We speak of agility and nimbleness together (remember Jack and the candle). Balance means poising or standing still on a point or a small base. In other words, when a child is standing still on her tiptoes, she is balanced. Of course, in order to balance, she must have the strength to get up on her toes and the coordination to remain there in order to be balanced for any length of time.",
+        "images/balance.jpg"),
+    Exercises(
+        "Flexibility",
+        "Exercises to improve the joint movements",
+        "Flexibility is the ability of a joint or series of joints to move through an unrestricted, pain free range of motion. Although flexibility varies widely from person to person, minimum ranges are necessary for maintaining joint and total body health. Many variables affect the loss of normal joint flexibility including injury, inactivity or a lack of stretching. The range of motion will be influenced by the mobility of the soft tissues that surround the joint.",
+        "images/flexible.jpg")
   ];
 
   @override
@@ -98,6 +114,7 @@ class _exerciseListPageState extends State<exerciseListPage> {
                   description: exercises[index].description,
                   briefDescription: exercises[index].briefDescription,
                   exercises: exercises[index],
+                  img: exercises[index].img,
                 );
               },
             )
