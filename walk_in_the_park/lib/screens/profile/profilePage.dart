@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:walk_in_the_park/screens/login_reg/homeScreen.dart';
 
 class profilePage extends StatefulWidget {
   profilePage({Key? key}) : super(key: key);
@@ -57,6 +58,7 @@ class _profilePageState extends State<profilePage> {
                         height: MediaQuery.of(context).size.height * 0.2,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
+                          //Theme.of(context).,
                           color: Colors.red[300],
                         ),
                         alignment: Alignment.center,
@@ -134,31 +136,41 @@ class _profilePageState extends State<profilePage> {
                         )),
                   ),
                   Align(
-                    child: Container(
-                        height: MediaQuery.of(context).size.height * 0.2,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: Colors.orangeAccent[100],
-                        ),
-                        alignment: Alignment.center,
-                        padding: const EdgeInsets.all(8),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Icon(
-                              Icons.exit_to_app,
-                              size: 50,
-                            ),
-                            Text(
-                              "Logout",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontStyle: FontStyle.italic,
-                                fontSize: 20,
+                    child: GestureDetector(
+                      onTap: () => {
+                        {
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) {
+                            return homeScreen();
+                          }))
+                        }
+                      },
+                      child: Container(
+                          height: MediaQuery.of(context).size.height * 0.2,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.orangeAccent[100],
+                          ),
+                          alignment: Alignment.center,
+                          padding: const EdgeInsets.all(8),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Icon(
+                                Icons.exit_to_app,
+                                size: 50,
                               ),
-                            )
-                          ],
-                        )),
+                              Text(
+                                "Logout",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontStyle: FontStyle.italic,
+                                  fontSize: 20,
+                                ),
+                              )
+                            ],
+                          )),
+                    ),
                   ),
                 ],
               ),
