@@ -3,6 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:walk_in_the_park/widgets/messagesList.dart';
 
 class ChatDetailPage extends StatefulWidget {
+  String name = '';
+  String profilePicture = '';
+  ChatDetailPage({Key? key, required this.name, required this.profilePicture})
+      : super(key: key);
+
   @override
   _ChatDetailPageState createState() => _ChatDetailPageState();
 }
@@ -10,6 +15,7 @@ class ChatDetailPage extends StatefulWidget {
 class _ChatDetailPageState extends State<ChatDetailPage> {
   final _messagecontroller = TextEditingController();
   final _ScrollController = ScrollController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,6 +41,7 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                   width: 2,
                 ),
                 CircleAvatar(
+                  backgroundImage: AssetImage(widget.profilePicture),
                   maxRadius: 20,
                 ),
                 SizedBox(
@@ -46,7 +53,7 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Text(
-                        "Kriss Benwat",
+                        widget.name,
                         style: TextStyle(
                             fontSize: 16, fontWeight: FontWeight.w600),
                       ),

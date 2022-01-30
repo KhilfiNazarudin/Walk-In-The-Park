@@ -12,7 +12,7 @@ class _ChatPageState extends State<ChatPage> {
     ChatUsers(
         name: "Doctor Mohamed Khilfi",
         messageText: "You have drastically slowed your stage 2 parkinsons",
-        imageURL: "images/userImage1.jpeg",
+        imageURL: "images/doctor.jpg",
         time: "Now"),
   ];
   @override

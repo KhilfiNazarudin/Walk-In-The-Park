@@ -23,7 +23,10 @@ class _ConversationListState extends State<ConversationList> {
     return GestureDetector(
       onTap: () {
         Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return ChatDetailPage();
+          return ChatDetailPage(
+            name: widget.name,
+            profilePicture: widget.imageUrl,
+          );
         }));
       },
       child: Container(
@@ -34,7 +37,7 @@ class _ConversationListState extends State<ConversationList> {
               child: Row(
                 children: <Widget>[
                   CircleAvatar(
-                    backgroundImage: NetworkImage(widget.imageUrl),
+                    backgroundImage: AssetImage(widget.imageUrl),
                     maxRadius: 30,
                   ),
                   SizedBox(

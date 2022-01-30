@@ -35,7 +35,17 @@ class _exerciseListState extends State<exerciseList> {
         }));
       },
       child: Container(
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(30),
+            gradient: LinearGradient(
+                begin: Alignment.centerLeft,
+                end: Alignment.bottomRight,
+                colors: [
+                  Colors.orange.shade100,
+                  Colors.orange.shade300,
+                ])),
         padding: EdgeInsets.only(left: 16, right: 16, top: 10, bottom: 10),
+        margin: EdgeInsets.all(15),
         child: Row(
           children: <Widget>[
             CircleAvatar(

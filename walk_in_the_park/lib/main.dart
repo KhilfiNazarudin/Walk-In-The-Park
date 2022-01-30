@@ -3,6 +3,7 @@ import 'package:walk_in_the_park/screens/exercise/exerciseDetailPage.dart';
 import 'package:walk_in_the_park/screens/exercise/exerciseListPage.dart';
 import 'package:walk_in_the_park/screens/login_reg/homeScreen.dart';
 import 'package:walk_in_the_park/screens/profile/profilePage.dart';
+import 'package:walk_in_the_park/widgets/drawer.dart';
 import 'screens/chats/chatListPage.dart';
 
 void main() => runApp(Main());
@@ -17,13 +18,34 @@ class Main extends StatefulWidget {
 class _MainState extends State<Main> {
   Color defaultp = Colors.red.shade400;
   Color defaults = Colors.orange.shade100;
+  Color defaulta = Colors.orange.shade300;
+  String title = 'Chats';
+  int index = 0;
+  List<Widget> list = [
+    ChatPage(),
+    exerciseListPage(),
+    profilePage(),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(primaryColor: defaultp, hintColor: defaults),
+      theme: ThemeData(
+          primaryColor: defaultp, hintColor: defaults, accentColor: defaulta),
       title: 'Material App',
-      home: exerciseListPage(),
+      home: Scaffold(
+          appBar: AppBar(
+            backgroundColor: Colors.orange.shade300,
+            title: Text(title),
+          ),
+          body: list[index],
+          drawer: MyDrawer(onTap: (context, i, txt) {
+            setState(() {
+              index = i;
+              title = txt;
+              Navigator.pop(context);
+            });
+          })),
     );
   }
 }
