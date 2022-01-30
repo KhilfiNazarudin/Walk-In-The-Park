@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:walk_in_the_park/screens/login_reg/homeScreen.dart';
+import 'package:walk_in_the_park/screens/profile/aboutPage.dart';
 import 'package:walk_in_the_park/widgets/drawer.dart';
 
 class profilePage extends StatefulWidget {
@@ -54,7 +55,6 @@ class _profilePageState extends State<profilePage> {
                     height: MediaQuery.of(context).size.height * 0.2,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      //Theme.of(context).,
                       color: Colors.red[300],
                     ),
                     alignment: Alignment.center,
@@ -63,11 +63,11 @@ class _profilePageState extends State<profilePage> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Icon(
-                          Icons.info,
+                          Icons.settings,
                           size: 50,
                         ),
                         Text(
-                          "Edit your information",
+                          "Settings",
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontStyle: FontStyle.italic,
@@ -105,31 +105,42 @@ class _profilePageState extends State<profilePage> {
                     )),
               ),
               Align(
-                child: Container(
-                    height: MediaQuery.of(context).size.height * 0.2,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.red[300],
-                    ),
-                    alignment: Alignment.center,
-                    padding: const EdgeInsets.all(8),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Icon(
-                          Icons.settings,
-                          size: 50,
-                        ),
-                        Text(
-                          "Settings",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontStyle: FontStyle.italic,
-                            fontSize: 20,
+                child: GestureDetector(
+                  onTap: () => {
+                    {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return aboutPage();
+                      }))
+                    }
+                  },
+                  child: Container(
+                      height: MediaQuery.of(context).size.height * 0.2,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        //Theme.of(context).,
+                        color: Colors.red[300],
+                      ),
+                      alignment: Alignment.center,
+                      padding: const EdgeInsets.all(8),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Icon(
+                            Icons.info,
+                            size: 50,
                           ),
-                        )
-                      ],
-                    )),
+                          Text(
+                            "About the App",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontStyle: FontStyle.italic,
+                              fontSize: 20,
+                            ),
+                          )
+                        ],
+                      )),
+                ),
               ),
               Align(
                 child: GestureDetector(

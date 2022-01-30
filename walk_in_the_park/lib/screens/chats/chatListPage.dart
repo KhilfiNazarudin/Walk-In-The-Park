@@ -14,6 +14,11 @@ class _ChatPageState extends State<ChatPage> {
         messageText: "You have drastically slowed your stage 2 parkinsons",
         imageURL: "images/doctor.jpg",
         time: "Now"),
+    ChatUsers(
+        name: "Caregiver1",
+        messageText: "Hi John Doe, I am your new caregiver",
+        imageURL: "images/caregiver1.jpg",
+        time: "Now"),
   ];
   @override
   Widget build(BuildContext context) {

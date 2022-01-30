@@ -31,6 +31,7 @@ class _exerciseListState extends State<exerciseList> {
         Navigator.push(context, MaterialPageRoute(builder: (context) {
           return exerciseDetailsPage(
             exercises: widget.exercises,
+            image: widget.img,
           ); //CHATDETAILPAGE
         }));
       },
