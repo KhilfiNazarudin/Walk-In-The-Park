@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:walk_in_the_park/main.dart';
+import 'package:walk_in_the_park/mainORIGIN.dart';
 import 'package:walk_in_the_park/models/exercise.dart';
 import 'package:walk_in_the_park/screens/exercise/exerciseDetailPage.dart';
 
