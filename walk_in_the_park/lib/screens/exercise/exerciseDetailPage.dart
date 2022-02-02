@@ -26,18 +26,29 @@ class _exerciseDetailsPageState extends State<exerciseDetailsPage> {
           physics: BouncingScrollPhysics(),
           child: Column(
             children: [
-              Text(
-                widget.exercises.name,
-                style: TextStyle(fontSize: 30),
-                textAlign: TextAlign.center,
-              ),
-              Image(image: AssetImage(widget.image)),
               Padding(
-                padding: const EdgeInsets.all(10),
+                padding: const EdgeInsets.all(50),
+                child: Text(
+                  widget.exercises.name,
+                  style: TextStyle(
+                      fontSize: 30,
+                      //fontWeight: FontWeight.bold,
+                      fontFamily: 'Trajan Pro'),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              Container(
+                width: 300,
+                height: 300,
+                decoration: BoxDecoration(
+                    image: DecorationImage(image: AssetImage(widget.image))),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(50),
                 child: Text(
                   widget.exercises.description,
                   textAlign: TextAlign.justify,
-                  style: TextStyle(fontSize: 20),
+                  style: TextStyle(fontSize: 16),
                 ),
               ),
             ],

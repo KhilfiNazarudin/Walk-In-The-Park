@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:walk_in_the_park/screens/exercise/exerciseDetailPage.dart';
 import 'package:walk_in_the_park/screens/exercise/exerciseListPage.dart';
 import 'package:walk_in_the_park/screens/login_reg/homeScreen.dart';
+import 'package:walk_in_the_park/screens/login_reg/loginScreen.dart';
 import 'package:walk_in_the_park/screens/profile/aboutPage.dart';
 import 'package:walk_in_the_park/screens/profile/profilePage.dart';
 import 'package:walk_in_the_park/widgets/drawer.dart';
@@ -35,11 +36,11 @@ class _MainState extends State<Main> {
           primaryColor: defaultp, hintColor: defaults, accentColor: defaulta),
       title: 'Material App',
       home: Scaffold(
-          // appBar: AppBar(
-          //   backgroundColor: Colors.orange.shade300,
-          //   title: Text(title),
-          // ),
-          body: aboutPage(), //list[index],
+          appBar: AppBar(
+            backgroundColor: Colors.orange.shade300,
+            title: Text(title),
+          ),
+          body: profilePage(), //list[index],
           drawer: MyDrawer(onTap: (context, i, txt) {
             setState(() {
               index = i;
