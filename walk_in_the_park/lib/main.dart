@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter/material.dart';
+import 'package:walk_in_the_park/home.dart';
 import 'package:walk_in_the_park/screens/chats/chatListPage.dart';
 import 'package:walk_in_the_park/screens/profile/profilePage.dart';
 
@@ -10,9 +11,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Material App',
-      home: loginScreen(),
-    );
+        title: 'Material App',
+        home: Scaffold(
+          body: loginScreen(),
+        ));
   }
 }
 
@@ -38,7 +40,7 @@ class _loginScreenState extends State<loginScreen> {
           gradient: LinearGradient(
         begin: Alignment.topLeft,
         end: Alignment.bottomRight,
-        colors: [Theme.of(context).primaryColor, Theme.of(context).hintColor],
+        colors: [Colors.red.shade400, Colors.orange.shade100],
       )),
       child: Center(
         child: Column(
@@ -98,10 +100,14 @@ class _loginScreenState extends State<loginScreen> {
                   } else {
                     idinput = "";
                     pwdinput = "";
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return ChatPage();
-                    }));
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return Main();
+                        },
+                      ),
+                    );
                   }
                 });
               },

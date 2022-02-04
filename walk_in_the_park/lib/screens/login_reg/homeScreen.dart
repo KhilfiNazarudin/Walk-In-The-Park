@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:walk_in_the_park/screens/chats/chatDetailPage.dart';
-import 'package:walk_in_the_park/screens/login_reg/loginScreen.dart';
-import 'package:walk_in_the_park/screens/profile/profilePage.dart';
+import 'package:walk_in_the_park/main.dart';
 
 class homeScreen extends StatefulWidget {
   homeScreen({Key? key}) : super(key: key);
@@ -29,7 +27,7 @@ class _homeScreenState extends State<homeScreen> {
               Text("THE PICTURE WILL GO HERE"),
               ElevatedButton(
                   onPressed: () => {
-                        Navigator.push(context,
+                        Navigator.pop(context,
                             MaterialPageRoute(builder: (context) {
                           return loginScreen();
                         }))

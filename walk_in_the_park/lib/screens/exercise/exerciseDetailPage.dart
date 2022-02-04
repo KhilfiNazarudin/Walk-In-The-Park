@@ -31,9 +31,9 @@ class _exerciseDetailsPageState extends State<exerciseDetailsPage> {
                 child: Text(
                   widget.exercises.name,
                   style: TextStyle(
-                      fontSize: 30,
-                      //fontWeight: FontWeight.bold,
-                      fontFamily: 'Trajan Pro'),
+                    fontSize: 30,
+                    //fontWeight: FontWeight.bold,
+                  ),
                   textAlign: TextAlign.center,
                 ),
               ),
@@ -41,7 +41,9 @@ class _exerciseDetailsPageState extends State<exerciseDetailsPage> {
                 width: 300,
                 height: 300,
                 decoration: BoxDecoration(
-                    image: DecorationImage(image: AssetImage(widget.image))),
+                  image: DecorationImage(
+                      image: AssetImage(widget.image), fit: BoxFit.contain),
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.all(50),

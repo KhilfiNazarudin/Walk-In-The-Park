@@ -34,6 +34,102 @@ class _exerciseListPageState extends State<exerciseListPage> {
         "images/flexible.jpg")
   ];
 
+  final exerciseNameC = TextEditingController();
+  final exerciseDescriptionC = TextEditingController();
+  final exerciseFDescriptionC = TextEditingController();
+
+  final exercisePictureC = TextEditingController();
+  String ename = '';
+  String edisc = '';
+  String eFdisc = '';
+  String epic = '';
+  Future<void> addExercise(BuildContext context) async {
+    return showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text('Add a specific exercise'),
+          content: Container(
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  TextField(
+                    onChanged: (value) {
+                      setState(() {
+                        ename = value;
+                      });
+                    },
+                    controller: exerciseNameC,
+                    decoration:
+                        InputDecoration(hintText: "Input Exercise Name"),
+                  ),
+                  TextField(
+                    onChanged: (value) {
+                      setState(() {
+                        edisc = value;
+                      });
+                    },
+                    controller: exerciseDescriptionC,
+                    decoration:
+                        InputDecoration(hintText: "Exercise Brief Description"),
+                  ),
+                  TextField(
+                    onChanged: (value) {
+                      setState(() {
+                        eFdisc = value;
+                      });
+                    },
+                    controller: exerciseFDescriptionC,
+                    decoration:
+                        InputDecoration(hintText: "Exercise Full Description"),
+                  ),
+                  TextField(
+                    onChanged: (value) {
+                      setState(() {
+                        epic = value;
+                      });
+                    },
+                    controller: exercisePictureC,
+                    decoration: InputDecoration(hintText: "Exercise picture"),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          actions: <Widget>[
+            FlatButton(
+              color: Colors.red,
+              textColor: Colors.white,
+              child: Text('Cancel'),
+              onPressed: () {
+                setState(() {
+                  Navigator.pop(context);
+                });
+              },
+            ),
+            FlatButton(
+              color: Colors.green,
+              textColor: Colors.white,
+              child: Text('Add Exercise'),
+              onPressed: () {
+                setState(() {
+                  Navigator.pop(context);
+                  exercises.add(Exercises(ename, edisc, eFdisc, epic));
+                });
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  // if (picked != null && picked != selectedDate)
+  //   setState(() {
+  //     selectedDate = picked;
+  //     _selectTime(context);
+  //   });
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,30 +149,33 @@ class _exerciseListPageState extends State<exerciseListPage> {
                       style:
                           TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
                     ),
-                    Container(
-                      padding:
-                          EdgeInsets.only(left: 8, right: 8, top: 2, bottom: 2),
-                      height: 30,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(30),
-                        color: Colors.pink[50],
-                      ),
-                      child: Row(
-                        children: <Widget>[
-                          Icon(
-                            Icons.add,
-                            color: Colors.pink,
-                            size: 20,
-                          ),
-                          SizedBox(
-                            width: 2,
-                          ),
-                          Text(
-                            "Add New",
-                            style: TextStyle(
-                                fontSize: 14, fontWeight: FontWeight.bold),
-                          ),
-                        ],
+                    GestureDetector(
+                      onTap: () => addExercise(context),
+                      child: Container(
+                        padding: EdgeInsets.only(
+                            left: 8, right: 8, top: 2, bottom: 2),
+                        height: 30,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(30),
+                          color: Colors.pink[50],
+                        ),
+                        child: Row(
+                          children: <Widget>[
+                            Icon(
+                              Icons.add,
+                              color: Colors.pink,
+                              size: 20,
+                            ),
+                            SizedBox(
+                              width: 2,
+                            ),
+                            Text(
+                              "Add New",
+                              style: TextStyle(
+                                  fontSize: 14, fontWeight: FontWeight.bold),
+                            ),
+                          ],
+                        ),
                       ),
                     )
                   ],

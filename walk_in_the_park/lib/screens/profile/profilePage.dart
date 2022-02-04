@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:walk_in_the_park/screens/login_reg/homeScreen.dart';
 import 'package:walk_in_the_park/screens/profile/aboutPage.dart';
 import 'package:walk_in_the_park/screens/profile/docProfilePage.dart';
@@ -12,6 +13,46 @@ class profilePage extends StatefulWidget {
 }
 
 class _profilePageState extends State<profilePage> {
+  String appt = "You have no appointments booked";
+  bool booked = false;
+  DateTime selectedDate = DateTime.now();
+  TimeOfDay selectedTime = TimeOfDay.now();
+
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+        context: context,
+        initialDate: selectedDate,
+        firstDate: DateTime(2015, 8),
+        lastDate: DateTime(2101),
+        helpText: "SELECT APPOINTMENT DATE",
+        confirmText: "Book");
+    if (picked != null && picked != selectedDate)
+      setState(() {
+        selectedDate = picked;
+        _selectTime(context);
+      });
+  }
+
+  Future<void> _selectTime(BuildContext context) async {
+    final TimeOfDay? timeOfDay = await showTimePicker(
+      context: context,
+      initialTime: selectedTime,
+      initialEntryMode: TimePickerEntryMode.dial,
+    );
+    if (timeOfDay != null && timeOfDay != selectedTime) {
+      setState(() {
+        selectedTime = timeOfDay;
+        booked = !booked;
+        if (booked == true) {
+          DateTime bookedTime = DateTime(selectedDate.day, selectedDate.month,
+              selectedDate.year, selectedTime.hour, selectedTime.minute);
+          String formattedDate = DateFormat.yMd().add_jm().format(bookedTime);
+          appt = "Appointment booked on " + formattedDate;
+        }
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,8 +70,9 @@ class _profilePageState extends State<profilePage> {
                 ),
                 Text(
                   "John Doe",
-                  style: TextStyle(fontSize: 20),
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
+                Text(appt),
               ],
             ),
             margin: EdgeInsets.only(top: 30),
@@ -53,43 +95,48 @@ class _profilePageState extends State<profilePage> {
               crossAxisCount: 2,
               children: <Widget>[
                 Align(
-                  child: Container(
-                      height: MediaQuery.of(context).size.height * 0.2,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.white,
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 5,
-                            blurRadius: 7,
-                            offset:
-                                Offset(10, -5), // changes position of shadow
+                  child: Builder(builder: (context) {
+                    return GestureDetector(
+                      onTap: () => {_selectDate(context)},
+                      child: Container(
+                          height: MediaQuery.of(context).size.height * 0.2,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.5),
+                                spreadRadius: 5,
+                                blurRadius: 7,
+                                offset: Offset(
+                                    10, -5), // changes position of shadow
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
-                      alignment: Alignment.center,
-                      padding: const EdgeInsets.all(8),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Icon(
-                            Icons.calendar_today,
-                            color: Colors.red,
-                            size: 50,
-                          ),
-                          Text(
-                            "Book an Appointment",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontStyle: FontStyle.italic,
-                              fontSize: 20,
-                              color: Colors.orange.shade500,
-                            ),
-                          )
-                        ],
-                      )),
+                          alignment: Alignment.center,
+                          padding: const EdgeInsets.all(8),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Icon(
+                                Icons.calendar_today,
+                                color: Colors.red,
+                                size: 50,
+                              ),
+                              Text(
+                                "Book an Appointment",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontStyle: FontStyle.italic,
+                                  fontSize: 20,
+                                  color: Colors.orange.shade500,
+                                ),
+                              )
+                            ],
+                          )),
+                    );
+                  }),
                 ),
                 Align(
                   child: GestureDetector(

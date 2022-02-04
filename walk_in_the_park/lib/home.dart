@@ -2,13 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:walk_in_the_park/screens/exercise/exerciseDetailPage.dart';
 import 'package:walk_in_the_park/screens/exercise/exerciseListPage.dart';
 import 'package:walk_in_the_park/screens/login_reg/homeScreen.dart';
-import 'package:walk_in_the_park/screens/login_reg/loginScreen.dart';
 import 'package:walk_in_the_park/screens/profile/aboutPage.dart';
 import 'package:walk_in_the_park/screens/profile/profilePage.dart';
 import 'package:walk_in_the_park/widgets/drawer.dart';
 import 'screens/chats/chatListPage.dart';
 
-void main() => runApp(Main());
+//void main() => runApp(Main());
 
 class Main extends StatefulWidget {
   Main({Key? key}) : super(key: key);
@@ -40,7 +39,7 @@ class _MainState extends State<Main> {
             backgroundColor: Colors.orange.shade300,
             title: Text(title),
           ),
-          body: profilePage(), //list[index],
+          body: list[index],
           drawer: MyDrawer(onTap: (context, i, txt) {
             setState(() {
               index = i;
