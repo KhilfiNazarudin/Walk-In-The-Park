@@ -26,13 +26,21 @@ class _homeScreenState extends State<homeScreen> {
             children: [
               Text("THE PICTURE WILL GO HERE"),
               ElevatedButton(
+                onPressed: () => {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return loginScreen();
+                  }))
+                },
+                child: Text("Login"),
+              ),
+              ElevatedButton(
                   onPressed: () => {
-                        Navigator.pop(context,
+                        Navigator.push(context,
                             MaterialPageRoute(builder: (context) {
                           return loginScreen();
                         }))
                       },
-                  child: Text("Login"))
+                  child: Text("Register"))
             ],
           ),
         ),
