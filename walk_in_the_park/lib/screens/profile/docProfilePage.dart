@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:walk_in_the_park/screens/chats/chatListPage.dart';
 import 'package:walk_in_the_park/screens/login_reg/homeScreen.dart';
 import 'package:walk_in_the_park/screens/profile/aboutPage.dart';
@@ -99,10 +100,7 @@ class docProfilePage extends StatelessWidget {
                     ),
                     onPressed: () => {
                       {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) {
-                          return docProfilePage();
-                        }))
+                        launch("tel: 64515115"),
                       }
                     },
                   ),
@@ -114,10 +112,8 @@ class docProfilePage extends StatelessWidget {
                     ),
                     onPressed: () => {
                       {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) {
-                          return ChatPage();
-                        }))
+                        launch(
+                            "mailto:askNYP@nyp.edu.sg?subject=WalkInThePark&body=The Best app")
                       }
                     },
                   ),

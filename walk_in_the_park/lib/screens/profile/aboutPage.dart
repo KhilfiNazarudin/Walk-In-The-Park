@@ -153,13 +153,13 @@ class aboutPage extends StatelessWidget {
                             decoration: BoxDecoration(
                                 image: DecorationImage(
                                     fit: BoxFit.contain,
-                                    image: AssetImage("images/flexible.jpg"))),
+                                    image: AssetImage("images/doctor.jpg"))),
                           ),
                         ),
                         Padding(
                           padding: const EdgeInsets.all(20),
                           child: Text(
-                            "HI I AM KHILFI FROM NYP",
+                            "Hi I am Khilfi Nazarudin from Nanyang Polytechnic. I am from L1 admin number 201945D. This application is done for my Mobile Application Development project in Year 2 Semester 2",
                             style: TextStyle(color: Colors.white, fontSize: 16),
                           ),
                         )

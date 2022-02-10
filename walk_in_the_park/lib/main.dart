@@ -60,7 +60,9 @@ class _loginScreenState extends State<loginScreen> {
                   decoration: InputDecoration(
                     hintText: 'Username',
                     hintStyle: TextStyle(
-                        fontWeight: FontWeight.w300, color: Colors.white),
+                        fontFamily: 'NexaBold',
+                        fontWeight: FontWeight.w500,
+                        color: Colors.white),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.white),
                     ),
@@ -76,9 +78,11 @@ class _loginScreenState extends State<loginScreen> {
                 child: TextField(
                   controller: _PWDcontroller,
                   decoration: InputDecoration(
-                    hintText: 'PWD',
+                    hintText: 'Password',
                     hintStyle: TextStyle(
-                        fontWeight: FontWeight.w300, color: Colors.white),
+                        fontFamily: 'NexaBold',
+                        fontWeight: FontWeight.w500,
+                        color: Colors.white),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.white),
                     ),
@@ -92,33 +96,57 @@ class _loginScreenState extends State<loginScreen> {
               Text(
                 message,
                 textAlign: TextAlign.start,
+                style: TextStyle(
+                    fontFamily: 'NexaBold', fontWeight: FontWeight.bold),
               ),
-              RaisedButton(
-                child: Text('LOGIN'),
-                color: Colors.blue[500],
-                onPressed: () {
-                  setState(() {
-                    idinput = _IDcontroller.text;
-                    pwdinput = _PWDcontroller.text;
-                    _IDcontroller.clear();
-                    _PWDcontroller.clear();
-                    if (credentials[0] != idinput ||
-                        credentials[1] != pwdinput) {
-                      message = "Wrong credentials entred";
-                    } else {
-                      idinput = "";
-                      pwdinput = "";
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) {
-                            return Main();
-                          },
-                        ),
-                      );
-                    }
-                  });
-                },
+              Padding(
+                padding: const EdgeInsets.all(30),
+                child: GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      idinput = _IDcontroller.text;
+                      pwdinput = _PWDcontroller.text;
+                      _IDcontroller.clear();
+                      _PWDcontroller.clear();
+                      if (credentials[0] != idinput ||
+                          credentials[1] != pwdinput) {
+                        message = "Wrong credentials entred";
+                      } else {
+                        idinput = "";
+                        pwdinput = "";
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return Main();
+                            },
+                          ),
+                        );
+                      }
+                    });
+                  },
+                  child: Container(
+                    width: 200,
+                    height: 50,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(
+                          color: Colors.white,
+                          width: 1,
+                        )),
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: Text(
+                        "Login",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 25,
+                            fontFamily: 'NexaBold',
+                            fontWeight: FontWeight.w500),
+                      ),
+                    ),
+                  ),
+                ),
               ),
             ],
           ),

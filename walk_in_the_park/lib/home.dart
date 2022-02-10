@@ -37,7 +37,11 @@ class _MainState extends State<Main> {
       home: Scaffold(
           appBar: AppBar(
             backgroundColor: Colors.orange.shade300,
-            title: Text(title),
+            title: Text(
+              title,
+              style: TextStyle(
+                  fontFamily: 'NexaBold', fontWeight: FontWeight.bold),
+            ),
           ),
           body: list[index],
           drawer: MyDrawer(onTap: (context, i, txt) {
