@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:walk_in_the_park/main.dart';
+import 'package:walk_in_the_park/screens/login_reg/registerScreen.dart';
 
 class homeScreen extends StatefulWidget {
   homeScreen({Key? key}) : super(key: key);
@@ -96,7 +97,7 @@ class _homeScreenState extends State<homeScreen> {
               GestureDetector(
                 onTap: () => {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return loginScreen();
+                    return registerScreen();
                   }))
                 },
                 child: Container(
