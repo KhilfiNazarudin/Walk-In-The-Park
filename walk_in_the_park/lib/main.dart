@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-
-import 'package:flutter/material.dart';
 import 'package:walk_in_the_park/home.dart';
-import 'package:walk_in_the_park/screens/chats/chatListPage.dart';
 import 'package:walk_in_the_park/screens/login_reg/homeScreen.dart';
-import 'package:walk_in_the_park/screens/profile/profilePage.dart';
 
 void main() => runApp(MyApp());
 Color defaultp = Colors.red.shade400;

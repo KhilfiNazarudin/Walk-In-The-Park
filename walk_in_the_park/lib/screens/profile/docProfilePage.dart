@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:walk_in_the_park/screens/chats/chatListPage.dart';
-import 'package:walk_in_the_park/screens/login_reg/homeScreen.dart';
-import 'package:walk_in_the_park/screens/profile/aboutPage.dart';
 
 class docProfilePage extends StatelessWidget {
   const docProfilePage({Key? key}) : super(key: key);

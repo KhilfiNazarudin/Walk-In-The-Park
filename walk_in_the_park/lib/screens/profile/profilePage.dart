@@ -3,7 +3,6 @@ import 'package:intl/intl.dart';
 import 'package:walk_in_the_park/screens/login_reg/homeScreen.dart';
 import 'package:walk_in_the_park/screens/profile/aboutPage.dart';
 import 'package:walk_in_the_park/screens/profile/docProfilePage.dart';
-import 'package:walk_in_the_park/widgets/drawer.dart';
 
 class profilePage extends StatefulWidget {
   profilePage({Key? key}) : super(key: key);
@@ -72,12 +71,6 @@ class _profilePageState extends State<profilePage> {
               child: Column(
                 children: [
                   TextField(
-                    onChanged: (value) {
-                      setState(() {
-                        nameEditor.clear();
-                        name = value;
-                      });
-                    },
                     controller: nameEditor,
                     decoration: InputDecoration(hintText: "New name"),
                   ),
@@ -92,6 +85,7 @@ class _profilePageState extends State<profilePage> {
               child: Text('Cancel'),
               onPressed: () {
                 setState(() {
+                  nameEditor.clear();
                   Navigator.pop(context);
                 });
               },
@@ -102,6 +96,7 @@ class _profilePageState extends State<profilePage> {
               child: Text('Change name'),
               onPressed: () {
                 setState(() {
+                  name = nameEditor.text;
                   nameEditor.clear();
                   Navigator.pop(context);
                 });

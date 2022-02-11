@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:walk_in_the_park/screens/exercise/exerciseDetailPage.dart';
 import 'package:walk_in_the_park/screens/exercise/exerciseListPage.dart';
-import 'package:walk_in_the_park/screens/login_reg/homeScreen.dart';
-import 'package:walk_in_the_park/screens/profile/aboutPage.dart';
 import 'package:walk_in_the_park/screens/profile/profilePage.dart';
 import 'package:walk_in_the_park/widgets/drawer.dart';
 import 'screens/chats/chatListPage.dart';
