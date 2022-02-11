@@ -13,10 +13,15 @@ class profilePage extends StatefulWidget {
 }
 
 class _profilePageState extends State<profilePage> {
+  final nameEditor = TextEditingController();
+  final pictureEditor = TextEditingController();
+
   String appt = "You have no appointments booked";
   bool booked = false;
   DateTime selectedDate = DateTime.now();
   TimeOfDay selectedTime = TimeOfDay.now();
+  String name = "John Doe";
+  String profilePicture = 'images/superhero.jpg';
 
   Future<void> _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
@@ -26,7 +31,8 @@ class _profilePageState extends State<profilePage> {
         lastDate: DateTime(2101),
         helpText: "SELECT APPOINTMENT DATE",
         confirmText: "Book");
-    if (picked != null && picked != selectedDate)
+    print(picked.toString());
+    if (picked != null)
       setState(() {
         selectedDate = picked;
         _selectTime(context);
@@ -39,18 +45,121 @@ class _profilePageState extends State<profilePage> {
       initialTime: selectedTime,
       initialEntryMode: TimePickerEntryMode.dial,
     );
-    if (timeOfDay != null && timeOfDay != selectedTime) {
+    print(timeOfDay.toString());
+    if (timeOfDay != null) {
       setState(() {
         selectedTime = timeOfDay;
         booked = !booked;
         if (booked == true) {
-          DateTime bookedTime = DateTime(selectedDate.day, selectedDate.month,
-              selectedDate.year, selectedTime.hour, selectedTime.minute);
+          DateTime bookedTime = DateTime(selectedDate.year, selectedDate.month,
+              selectedDate.day, selectedTime.hour, selectedTime.minute);
+          print(bookedTime.toString());
           String formattedDate = DateFormat.yMd().add_jm().format(bookedTime);
           appt = "Appointment booked on " + formattedDate;
         }
       });
     }
+  }
+
+  Future<void> editName(BuildContext context) async {
+    return showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text('Change name'),
+          content: Container(
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  TextField(
+                    onChanged: (value) {
+                      setState(() {
+                        nameEditor.clear();
+                        name = value;
+                      });
+                    },
+                    controller: nameEditor,
+                    decoration: InputDecoration(hintText: "New name"),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          actions: <Widget>[
+            FlatButton(
+              color: Colors.red,
+              textColor: Colors.white,
+              child: Text('Cancel'),
+              onPressed: () {
+                setState(() {
+                  Navigator.pop(context);
+                });
+              },
+            ),
+            FlatButton(
+              color: Colors.green,
+              textColor: Colors.white,
+              child: Text('Change name'),
+              onPressed: () {
+                setState(() {
+                  nameEditor.clear();
+                  Navigator.pop(context);
+                });
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  Future<void> changePhoto(BuildContext context) async {
+    return showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text('Change profile photo'),
+          content: Container(
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  TextField(
+                    controller: pictureEditor,
+                    decoration:
+                        InputDecoration(hintText: "New profile picture path"),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          actions: <Widget>[
+            FlatButton(
+              color: Colors.red,
+              textColor: Colors.white,
+              child: Text('Cancel'),
+              onPressed: () {
+                setState(() {
+                  pictureEditor.clear();
+                  Navigator.pop(context);
+                });
+              },
+            ),
+            FlatButton(
+              color: Colors.green,
+              textColor: Colors.white,
+              child: Text('Change profile picture'),
+              onPressed: () {
+                setState(() {
+                  profilePicture = pictureEditor.text;
+                  pictureEditor.clear();
+                  Navigator.pop(context);
+                });
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
@@ -63,14 +172,32 @@ class _profilePageState extends State<profilePage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                CircleAvatar(
-                  radius: 50,
-                  backgroundImage: AssetImage('images/superhero.jpg'),
-                  backgroundColor: Colors.black,
+                GestureDetector(
+                  onTap: () => setState(() {
+                    changePhoto(context);
+                  }),
+                  child: CircleAvatar(
+                    radius: 50,
+                    backgroundImage: AssetImage(profilePicture),
+                    backgroundColor: Colors.black,
+                  ),
                 ),
-                Text(
-                  "John Doe",
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      name,
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                    IconButton(
+                        onPressed: () => {
+                              setState(() {
+                                editName(context);
+                              })
+                            },
+                        icon: Icon(Icons.edit))
+                  ],
                 ),
                 Text(appt),
               ],
